@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>Range Change update Checkbox</title>
+        <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+        <script src="ion.rangeSlider.js"></script>
+        <link href="ion.rangeSlider.css" rel="stylesheet" />
+        <link href="http://materializecss.com/css/ghpages-materialize.css" rel="stylesheet" />
+    <script>
+        //Default Value
+        $(function () {
+            $("#Group1_RangeID, #Group2_RangeID").ionRangeSlider({
+                disable: false,
+                min: 0,
+                max: 5,
+            });
+        });        
+    </script>
+</head>
+    <body>
+        <div style="width:500px; margin-top:50px; margin-left:25px;">
+        <div  id="Group1" style="width:40%; ">
+            <input type="text" id="Group1_RangeID" value="" name="range" />
+              <div id="Group1_RadioID">
+                <p>
+                    <input type="checkbox" id="Group1_test1" class="wskCheckbox" name="Group1" value="1" />
+                    <label for="Group1_test1">Red</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="Group1_test2" class="wskCheckbox"  name="Group1" value="2" />
+                    <label for="Group1_test2">Yellow</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="Group1_test3" class="wskCheckbox" name="Group1" value="3" />
+                    <label for="Group1_test3">Green</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="Group1_test4"  class="wskCheckbox" name="Group1" value="4" />
+                    <label for="Group1_test4">Black</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="Group1_test5"   class="wskCheckbox"  name="Group1"  value="5" />
+                    <label for="Group1_test5">Brown</label>
+                </p>
+            </div>
+        </div>
+        
+          <div  id="Group2" style="width:40%;margin-top:50px">
+            <input type="text" id="Group2_RangeID" value="" name="range" />
+            <div id="Group2_RadioID">
+                    <p>
+                    <input type="checkbox" id="Group2_test1" class="wskCheckbox" name="Group2" value="1" />
+                    <label for="Group2_test1">Red</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="Group2_test2" class="wskCheckbox" name="Group2"  value="2" />
+                    <label for="Group2_test2">Yellow</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="Group2_test3" class="wskCheckbox" name="Group2"  value="3" />
+                    <label for="Group2_test3">Green</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="Group2_test4"  class="wskCheckbox" name="Group2"  value="4" />
+                    <label for="Group2_test4">Black</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="Group2_test5"   class="filled-in wskCheckbox" name="Group2"  value="5" />
+                    <label for="Group2_test5">Brown</label>
+                </p>
+            </div>
+        </div>
+</div>
+    </body>
+</html>
+<script>
+//---------> range Chenge checkbox update
+    $("input[name=range]").on('change', function () {
+
+        var RangeVal = $(this).val();
+        var DivID = $(this).parent();
+
+        DivID.find('.wskCheckbox').each(function () {
+            if (RangeVal == $(this).val())
+            {
+                $(this).prop("checked", true);
+            } 
+            else
+            {
+                $(this).prop("checked", false);
+            }
+
+        });
+
+    });
+    //--------------< End
+
+    //---------> checkbox Chenge  Range Update
+    $(".wskCheckbox").on('click', function (){
+        
+        var ClickVal = $(this).val();
+        var DivID = $(this).parent().parent().parent();
+
+        var slider = DivID.find("input[name=range]").data("ionRangeSlider");    // Range components
+        slider.update({
+            from: ClickVal
+        });
+
+    });
+    //--------------< End
+    
+    
+    // Checkbox = radio button 
+  $("input:checkbox").on('click', function () {
+        var $box = $(this);
+        if ($box.is(":checked")) {
+
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
+</script>
