@@ -4,21 +4,21 @@ Range Change to Update Checkbox or Checkbox Change to Update Range
 
 //---------> range Chenge checkbox update
 
-$("input[name=range]").on('change', function () {
-
-    var RangeVal = $(this).val();
-    var DivID = $(this).parent();
-    DivID.find('.wskCheckbox').each(function () {
-        if (RangeVal == $(this).val())
-        {
-        $(this).prop("checked", true);
-        }
-        else
-        {
-        $(this).prop("checked", false);
-        }
+    $("input[name=range]").on('change', function () {
+    
+        var RangeVal = $(this).val();
+        var DivID = $(this).parent();
+        DivID.find('.wskCheckbox').each(function () {
+            if (RangeVal == $(this).val())
+            {
+            $(this).prop("checked", true);
+            }
+            else
+            {
+            $(this).prop("checked", false);
+            }
+        });
     });
-});
 //--------------< End
 
 //---------> checkbox Chenge  Range Update
