@@ -22,15 +22,16 @@ $("input[name=range]").on('change', function () {
 //--------------< End
 
 //---------> checkbox Chenge  Range Update
-$(".wskCheckbox").on('click', function (){
 
-    var ClickVal = $(this).val();
-    var DivID = $(this).parent().parent().parent();
-    var slider = DivID.find("input[name=range]").data("ionRangeSlider");// Range components
-        slider.update({
-            from: ClickVal
-        });
+    $(".wskCheckbox").on('click', function (){
+
+        var ClickVal = $(this).val();
+        var DivID = $(this).parent().parent().parent();
+        var slider = DivID.find("input[name=range]").data("ionRangeSlider");// Range components
+            slider.update({
+                from: ClickVal
+            });
     
-});
+    });
 //--------------< End
     
